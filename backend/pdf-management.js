@@ -28,7 +28,7 @@ async function horizontalA4TemplatePDF(pagesNbr, mmCutMargin) {
 
     for (let i = 1; i <= pagesNbr / 2; i++) {
         const page = pdf.addPage([pageSize.width, pageSize.height]);
-        const cover = i === 1 || i === pagesNbr/2;
+        const cover = i === 1 || i === pagesNbr / 2;
         addFanzinePage(i, 'left', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
         addFanzinePage(i, 'right', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
     }
@@ -44,6 +44,7 @@ async function horizontalA4TemplatePDF(pagesNbr, mmCutMargin) {
 await horizontalA4TemplatePDF(6, 2);
 
 function addFanzinePage(i, position, cover, font, fanzineSize, pageSize, pagesNumber, cutMargin, page) {
+    if (!i || typeof i !== 'number' || pagesNumber < 1) return;
     if (!['left', 'right'].includes(position)) return;
     if (typeof cover !== 'boolean') return;
     if (!font || Object.keys(font).length !== 2 || !font.default || !font.bold) return;
@@ -57,29 +58,14 @@ function addFanzinePage(i, position, cover, font, fanzineSize, pageSize, pagesNu
         width: fanzineSize.width - 2 * cutMargin,
         height: fanzineSize.height - 2 * cutMargin,
     };
-    const pseudoLineMargin = 20;
-    const pseudoLine = {
-        width: 2,
-        height: fanzineSize.height - pseudoLineMargin * 2,
-    };
 
     let rectangleX;
-    let rectangleY;
+    const rectangleY = (pageSize.height - rectangle.height) / 2;
     if (position === 'left') {
-        rectangleX = (pageSize.width / 2 - rectangle.width) / 2;
-        rectangleY = (pageSize.height - rectangle.height) / 2;
-
-        page.drawRectangle({
-            x: (pageSize.width - pseudoLine.width) / 2,
-            y: pseudoLineMargin,
-            width: pseudoLine.width,
-            height: pseudoLine.height,
-            color: rgb(0.059, 0.376, 0.388),
-        })
+        rectangleX = pageSize.width * 0.25 - rectangle.width / 2;
     }
     if (position === 'right') {
-        rectangleX = (pageSize.width * 3 / 2 - rectangle.width) / 2;
-        rectangleY = (pageSize.height - rectangle.height) / 2;
+        rectangleX = pageSize.width * 0.75 - rectangle.width / 2;
     }
     page.drawRectangle({
         x: rectangleX,
@@ -89,29 +75,55 @@ function addFanzinePage(i, position, cover, font, fanzineSize, pageSize, pagesNu
         borderColor: rgb(0.561, 0.224, 0.224),
         borderWidth: borderWidth,
     });
-    addLabel(i, position, cover, font, pageSize, pagesNumber, page)
+
+    const pseudoLineHeightMargin = 20;
+    const pseudoLine = {
+        width: 2,
+        height: fanzineSize.height - pseudoLineHeightMargin * 2,
+    };
+
+    page.drawRectangle({
+        x: (pageSize.width - pseudoLine.width) / 2,
+        y: pseudoLineHeightMargin,
+        width: pseudoLine.width,
+        height: pseudoLine.height,
+        color: rgb(0.059, 0.376, 0.388),
+    })
+    addLabel(i, position, cover, font, pageSize, pagesNumber, page);
 
     return page;
 }
 
 function addLabel(i, position, cover, font, pageSize, pagesNumber, page) {
+    if (!i || typeof i !== 'number' || pagesNumber < 1) return;
     if (!['left', 'right'].includes(position)) return;
-    if (!cover || typeof cover !== "boolean") return;
+    if (typeof cover !== "boolean") return;
     if (!font || Object.keys(font).length !== 2 || !font.default || !font.bold) return;
     if (!isTemplateSizeCorrect(pageSize)) return;
     if (!pagesNumber || typeof pagesNumber !== 'number' || pagesNumber === 0 || pagesNumber % 2 !== 0) return;
     if (!page) return;
+
+    i = position === 'left' ? 2 * i - 1 : 2 * i;
     const label = cover ?
         `Fanzinzin ${i} / ${pagesNumber} C'est la cover Thibz` :
         `Fanzinzin ${i} / ${pagesNumber}`;
     const textSize = cover ? 20 : 25;
     const color = cover ? rgb(0, 0.373, 0.388) : rgb(0.431, 0.431, 0.431);
-    const fontType = cover ? font.default : font.bold;
+    const fontType = font.bold;
     const textWidth = fontType.widthOfTextAtSize(label, textSize);
 
+    let textX;
+    const textY = (pageSize.height - textSize) / 2;
+    if (position === "left") {
+        textX = 0.25 * pageSize.width - textWidth / 2;
+    }
+    if (position === 'right') {
+        textX = 0.75 * pageSize.width - textWidth / 2;
+    }
+
     page.drawText(label, {
-        x: (pageSize.width / 2 - textWidth) / 2,
-        y: (pageSize.height - textSize) / 2,
+        x: textX,
+        y: textY,
         size: textSize,
         font: fontType,
         color: color,

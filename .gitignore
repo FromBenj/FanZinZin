@@ -7,3 +7,5 @@ notes
 # Node
 node_modules/
 
+# pdf tests
+backend/pdf/
