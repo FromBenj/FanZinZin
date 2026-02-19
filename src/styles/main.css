@@ -62,11 +62,25 @@ body {
     margin: 2rem;
 }
 
-#submit-btn:hover {
+#import-btns-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 3rem;
+}
+
+.import-btn {
+    border: 0;
+    background-color: transparent;
+    opacity: 100%;
+    scale: 1;
+    transition: all 300ms;
+}
+
+#submit-btn:hover, .import-btn:hover {
     opacity: 50%;
 }
 
-#submit-btn:active {
+#submit-btn:active, .import-btn:active {
     opacity: 80%;
     scale: 80%;
 }
@@ -81,7 +95,7 @@ input[type=number]::placeholder {
     opacity: 30%;
 }
 
-#button-container {
+#submit-button-container {
     width: 15vh;
     position: relative;
     display: flex;

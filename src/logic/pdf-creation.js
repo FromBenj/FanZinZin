@@ -29,11 +29,8 @@ export async function createHorizontalA4Template(pagesNbr, mmCutMargin) {
         addFanzinePage(i, 'left', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
         addFanzinePage(i, 'right', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
     }
-    const pdfBytes = await pdf.save();
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    window.open(url);
 
+    return await pdf.save();
 }
 
 function addFanzinePage(i, position, cover, font, fanzineSize, pageSize, pagesNumber, cutMargin, page) {
