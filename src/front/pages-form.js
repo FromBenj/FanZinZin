@@ -1,41 +1,28 @@
-export function pagesRepartition() {
-    const btn = document.getElementById('number-done-btn');
-    const input = document.getElementById('pages-number');
-    if (!btn || !input) return;
+import {createHorizontalA4Template} from './../logic/pdf-creation.js';
+import {pdfButtonsAppear} from "./pdf-available.js";
 
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const pages = parseInt(input.value);
-        if (isNaN(pages) || !Number.isInteger(pages) || pages <= 0) return;
-        const repartition = getRepartition(pages);
-        console.log(repartition)
-        // Add message "done!"
+export function getPDF() {
+    const btn = document.getElementById('submit-btn');
+    const pagesInput = document.getElementById('pages-number');
+    const marginInput = document.getElementById('cut-margin');
+    if (!btn || !pagesInput || !marginInput) return;
+
+    btn.addEventListener('click', async (e) => {
+        await pdfCreation(e, pagesInput, marginInput);
     })
-
-    btn.addEventListener('touchstart', () => {
+    btn.addEventListener('touchstart', async (e) => {
+        await pdfCreation(e, pagesInput, marginInput);
     })
 }
 
-pagesRepartition()
-
-
-function renderSolution() {
-
-}
-
-function getRepartition(pages) {
-    if (!Number.isInteger(pages) || pages % 2 === 1) return;
-    let repartition = [];
-    let leftPage = 0;
-    let rightPage = pages;
-    while(leftPage < rightPage) {
-        let page = leftPage === 0 || leftPage === 1 ?
-            {left: leftPage, right: rightPage, cover: true} :
-            {left: leftPage, right: rightPage};
-        repartition.push(page);
-        leftPage++;
-        rightPage--;
-    }
-
-    return repartition;
+const pdfCreation = async (e, pagesInput, marginInput) => {
+    e.preventDefault();
+    const pagesNbr = parseInt(pagesInput.value);
+    if (isNaN(pagesNbr) || !Number.isInteger(pagesNbr) || pagesNbr <= 0) return;
+    const cutMargin = parseInt(marginInput.value);
+    if (isNaN(cutMargin) || !Number.isInteger(cutMargin) || cutMargin < 0) return;
+    console.log(pagesNbr, cutMargin)
+    await createHorizontalA4Template(pagesNbr, cutMargin)
+        // .then(() => pdfButtonsAppear())
+        // .catch(error => console.log(error))
 }

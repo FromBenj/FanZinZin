@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "pdf-lib": "^1.17.1"
   },
   "devDependencies": {

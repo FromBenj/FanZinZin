@@ -1,5 +1,7 @@
-import {pagesRepartition} from "./ui/pages-management.js";
+import {getPDF} from "./front/pages-form.js";
+// Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-document.addEventListener('DOMContentLoaded', () => {
-    pagesRepartition();
+document.addEventListener('DOMContentLoaded', async () => {
+    getPDF();
 })

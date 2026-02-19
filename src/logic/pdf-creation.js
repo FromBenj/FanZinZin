@@ -1,6 +1,6 @@
 import {PDFDocument, rgb, StandardFonts} from "pdf-lib";
 
-async function horizontalA4TemplatePDF(pagesNbr, mmCutMargin) {
+export async function createHorizontalA4Template(pagesNbr, mmCutMargin) {
     if (!pagesNbr || typeof pagesNbr !== 'number' || pagesNbr === 0 || !pagesNbr % 2) return;
     if (!mmCutMargin || typeof mmCutMargin !== 'number' || mmCutMargin < 0 || mmCutMargin >= 210 / 2) return;
     const pdf = await PDFDocument.create();
@@ -29,6 +29,11 @@ async function horizontalA4TemplatePDF(pagesNbr, mmCutMargin) {
         addFanzinePage(i, 'left', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
         addFanzinePage(i, 'right', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
     }
+    const pdfBytes = await pdf.save();
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    window.open(url);
+
 }
 
 function addFanzinePage(i, position, cover, font, fanzineSize, pageSize, pagesNumber, cutMargin, page) {

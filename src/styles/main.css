@@ -2,6 +2,18 @@
 
 body {
     font-family: 'Google Sans', sans-serif;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+    background-image: url('./../images/colorfull-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#header {
+    height: 30vh;
 }
 
 #project-name {
@@ -10,36 +22,77 @@ body {
     -6px 6px #0e7c7b, -5px 5px #0e7c7b, -4px 4px #0e7c7b,
     -3px 3px #0e7c7b, -2px 2px #0e7c7b, -1px 1px #0e7c7b;
     color: #ec7d7d;
+    font-size: 12vh;
 }
-
 
 #input-form-container {
-    /*height: 30vw;*/
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 3rem;
+    height: 40vh;
 }
 
-#input-form-label {
+.form-label {
     color: #ec7d7d;
     font-weight: bold;
-}
-
-#pages-number {
+    font-size: 3vh;
     text-align: center;
-    width: 10vh;
-    height: 10vh;
-    margin: 0 5vw;
 }
 
-#number-done-btn {
+#pages-number, #cut-margin {
+    text-align: center;
+    width: 15vh;
+    height: 15vh;
+    font-size: 3rem;
+    font-weight: bold;
+    opacity: 50%;
+    aspect-ratio: 1;
+    border: solid 1vh;
+    border-radius: 20%;
+}
+
+#submit-btn {
     border: 0;
     background-color: transparent;
-    font-size: 10vh;
-    margin: 0 5vw;
+    width: 10vh;
+    position: relative;
+    z-index: 2;
+    opacity: 100%;
+    scale: initial;
+    transition: all 200ms;
+    margin: 2rem;
 }
 
+#submit-btn:hover {
+    opacity: 50%;
+}
 
+#submit-btn:active {
+    opacity: 80%;
+    scale: 80%;
+}
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+input[type=number]::placeholder {
+    opacity: 30%;
+}
+
+#button-container {
+    width: 15vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#explosion {
+    height: 20vh;
+    aspect-ratio: initial;
+    position: absolute;
+    z-index: 1;
+    display: none;
 }
