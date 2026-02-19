@@ -1,7 +1,4 @@
 import {PDFDocument, rgb, StandardFonts} from "pdf-lib";
-import fs from "fs";
-import path from 'path';
-import {fileURLToPath} from 'url';
 
 async function horizontalA4TemplatePDF(pagesNbr, mmCutMargin) {
     if (!pagesNbr || typeof pagesNbr !== 'number' || pagesNbr === 0 || !pagesNbr % 2) return;
@@ -32,16 +29,7 @@ async function horizontalA4TemplatePDF(pagesNbr, mmCutMargin) {
         addFanzinePage(i, 'left', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
         addFanzinePage(i, 'right', cover, font, fanzinePage, pageSize, pagesNbr, cutMargin, page);
     }
-
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    const pdfFolder = __dirname + '/pdf';
-    const pdfBytes = await pdf.save();
-    fs.writeFileSync(`${pdfFolder}/fanzinzin-${pagesNbr}_pages.pdf`, pdfBytes);
-    console.log(`✅ Created: fanzinzin-${pagesNbr}_pages.pdf`);
 }
-
-await horizontalA4TemplatePDF(6, 2);
 
 function addFanzinePage(i, position, cover, font, fanzineSize, pageSize, pagesNumber, cutMargin, page) {
     if (!i || typeof i !== 'number' || pagesNumber < 1) return;

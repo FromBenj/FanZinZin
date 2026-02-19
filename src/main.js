@@ -1,4 +1,4 @@
-import {pagesRepartition} from "./pages-management.js";
+import {pagesRepartition} from "./ui/pages-management.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     pagesRepartition();
