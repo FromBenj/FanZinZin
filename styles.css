@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+body {
+    font-family: 'Google Sans', sans-serif;
+}
+
+#project-name {
+    text-shadow: -1px 0 #0e7c7b, 0 1px #0e7c7b, 1px 0 #0e7c7b,
+    0 -1px #0e7c7b, -8px 8px #0e7c7b, -7px 7px #0e7c7b,
+    -6px 6px #0e7c7b, -5px 5px #0e7c7b, -4px 4px #0e7c7b,
+    -3px 3px #0e7c7b, -2px 2px #0e7c7b, -1px 1px #0e7c7b;
+    color: #ec7d7d;
+}
+
+
+#input-form-container {
+    /*height: 30vw;*/
+}
+
+#input-form-label {
+    color: #ec7d7d;
+    font-weight: bold;
+}
+
+#pages-number {
+    text-align: center;
+    width: 10vh;
+    height: 10vh;
+    margin: 0 5vw;
+}
+
+#number-done-btn {
+    border: 0;
+    background-color: transparent;
+    font-size: 10vh;
+    margin: 0 5vw;
+}
+
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
