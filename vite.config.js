@@ -1,5 +1,8 @@
 import {defineConfig} from 'vite'
 
 export default defineConfig({
-    base: '/FanZinZin/'
+    base: '/FanZinZin/',
+    build: {
+        chunkSizeWarningLimit: 600,
+    },
 })

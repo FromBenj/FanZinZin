@@ -1,0 +1,49 @@
+<div class="my-3 px-3 d-flex flex-column justify-content-center align-items-center" id='header'>
+    <h1 class="fw-bold text-center w-100 display-1" id="project-name">FanZinZin</h1>
+    <h3 class="h1 fw-bold text-center w-100 pt-3 ">Le Fanzine complètement
+        <span class="text-nowrap">Zin-Zin</span>
+    </h3>
+</div>
+
+<div class="d-flex justify-content-center align-items-center w-100">
+    <div class="h-100 w-100 d-flex justify-content-center align-items-center">
+        <div class="py-5 w-75 d-flex justify-content-around align-items-center position-relative" id="input-form-container">
+            <div class="d-flex flex-column align-items-center h-100">
+                <h3 class="m-0 pb-4 form-label">Nombre de pages</h3>
+                <label for="pages-number"></label>
+                <input id="pages-number" max="1000" min="2" placeholder="24" type="number">
+                <p class="h5 fst-italic pt-3">(page A5)</p>
+            </div>
+            <div class="d-flex flex-column align-items-center h-100">
+                <h3 class="m-0 pb-4 form-label">Marge de découpe</h3>
+                <label for="cut-margin"></label>
+                <input id="cut-margin" max="1000" min="0" placeholder="10" type="number">
+                <p class="h5 fst-italic pt-3">(en mm)</p>
+            </div>
+            <div class="h-100" id="submit-button-container">
+                <h3 class="pb-4 form-label">click</h3>
+                <button id="submit-btn" type="submit">
+                    <img alt="Muscle" src="images/muscle.svg">
+                </button>
+                <img alt="Explosion icon" id="explosion" src="images/explosion.png">
+            </div>
+            <div class="py-5 w-75 d-flex justify-content-center align-items-center position-absolute z-3" id="result-message-container">
+                <p id="form-result" class="h1">Done!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-3 w-100 d-flex justify-content-center align-items-center">
+    <div class="w-50 d-flex justify-content-around align-items-center" id="import-btns-container">
+        <button class="import-btn">
+            <img alt="Download" id="download-btn" src="images/download.svg">
+        </button>
+        <button class="import-btn" id="preview-btn">
+            <img alt="Preview" src="images/preview.svg">
+        </button>
+        <button class="import-btn" id="canva-btn">
+                <img alt="Canva import" src="images/canva.svg">
+        </button>
+    </div>
+</div>

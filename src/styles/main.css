@@ -11,7 +11,7 @@ body {
     max-height: 100vh;
     width: 100vw;
     padding: 1rem;
-    background-image: url('../images/main-bg.jpg');
+    background-image: url('../../public/images/main-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -134,7 +134,7 @@ input[type=number]::placeholder {
 }
 
 .done-container {
-    background-image: url('../images/done-bg.jpg');
+    background-image: url('../../public/images/done-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
