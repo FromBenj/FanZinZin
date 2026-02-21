@@ -9,59 +9,13 @@
     <link href="src/styles/main.css" rel="stylesheet">
 </head>
 <body>
-<div class="my-3 px-3 d-flex flex-column justify-content-center align-items-center" id='header'>
-    <h1 class="fw-bold text-center w-100 display-1" id="project-name">FanZinZin</h1>
-    <h3 class="h1 fw-bold text-center w-100 pt-3 ">Le Fanzine complètement
-        <span class="text-nowrap">Zin-Zin</span>
-    </h3>
-</div>
-
-<div class="d-flex justify-content-center align-items-center w-100">
-    <div class="h-100 w-100 d-flex justify-content-center align-items-center">
-        <div class="py-5 w-75 d-flex justify-content-around align-items-center" id="input-form-container">
-            <div class="d-flex flex-column align-items-center h-100">
-                <h3 class="m-0 pb-4 form-label">Nombre de pages</h3>
-                <label for="pages-number"></label>
-                <input id="pages-number" max="1000" min="2" placeholder="24" type="number">
-                <p class="h5 fst-italic pt-3">(page A5)</p>
-            </div>
-            <div class="d-flex flex-column align-items-center h-100">
-                <h3 class="m-0 pb-4 form-label">Marge de découpe</h3>
-                <label for="cut-margin"></label>
-                <input id="cut-margin" max="1000" min="0" placeholder="10" type="number">
-                <p class="h5 fst-italic pt-3">(en mm)</p>
-            </div>
-            <div class="h-100" id="submit-button-container">
-                <h3 class="pb-4 form-label">click</h3>
-                <button id="submit-btn" type="submit">
-                    <img alt="Muscle" src="src/images/muscle.svg">
-                </button>
-                <img alt="Explosion icon" id="explosion" src="./src/images/explosion.png">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="py-3 w-100 d-flex justify-content-center align-items-center">
-    <div id="import-btns-container" class="w-50 d-flex justify-content-around align-items-center">
-        <button class="import-btn">
-            <img id="download-btn" alt="Download" src="src/images/download.svg">
-        </button>
-        <button id="preview-btn" class="import-btn">
-            <img alt="Preview" src="src/images/preview.svg">
-        </button>
-        <button class="import-btn">
-            <a href="https://www.canva.com/signup/?signupRedirect=/design%2Fplay%3Fcategory%3DtAFK2fpTBVQ%26referrer%3Ddocs%26ui%3DeyJFIjp7IkE_IjoiQSIsIkEiOiIifX0&loginRedirect=/design%2Fplay%3Fcategory%3DtAFK2fpTBVQ%26referrer%3Ddocs%26ui%3DeyJFIjp7IkE_IjoiQSIsIkEiOiIifX0"
-               target="_blank">
-                <img alt="Canva import" src="src/images/canva.svg">
-            </a>
-        </button>
-    </div>
-</div>
+<div id="app"></div>
 
 <!--JS-->
-<script crossorigin="anonymous" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script
+        crossorigin="anonymous" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+</script>
 <script src="src/main.js" type="module"></script>
 </body>
 </html>

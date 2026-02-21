@@ -1,18 +1,12 @@
-import {createHorizontalA4Template} from './../logic/pdf-creation.js';
-import {pdfButtonsAppear} from "./animations.js";
+import {createHorizontalA4Template} from '../logic/pdf-creation.js';
 
-export function getPDF() {
+export async function getPDF(e) {
     const btn = document.getElementById('submit-btn');
     const pagesInput = document.getElementById('pages-number');
     const marginInput = document.getElementById('cut-margin');
     if (!btn || !pagesInput || !marginInput) return;
 
-    btn.addEventListener('click', async (e) => {
-        await pdfCreation(e, pagesInput, marginInput);
-    })
-    // btn.addEventListener('touchstart', async (e) => {
-    //     await pdfCreation(e, pagesInput, marginInput);
-    // })
+    return await pdfCreation(e, pagesInput, marginInput);
 }
 
 const pdfCreation = async (e, pagesInput, marginInput) => {
@@ -26,10 +20,9 @@ const pdfCreation = async (e, pagesInput, marginInput) => {
         .then((pdfBytes) => {
             previewPDF(pdfBytes);
             downloadPDF(pdfBytes, pagesNbr)
+            pdfToCanva(pdfBytes, pagesNbr)
         })
         .catch(error => console.log('pdfCreation function failed: ' + error))
-    // .then(() => pdfButtonsAppear())
-    // .catch(error => console.log(error))
 }
 
 const previewPDF = (pdfBytes) => {
@@ -46,15 +39,39 @@ const previewPDF = (pdfBytes) => {
 const downloadPDF = (pdfBytes, pagesNbr) => {
     const downloadBtn = document.getElementById('download-btn');
     if (!downloadBtn) return;
-    const blob = new Blob([pdfBytes], {type: 'application/pdf'});
+
     downloadBtn.addEventListener('click', () => {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = pdfName(pagesNbr) + '.pdf';
-            a.click();
+            downloadPDFAction(pdfBytes, pagesNbr);
         }
     )
+}
+
+const pdfToCanva = (pdfBytes, pagesNbr) => {
+    const canvaBtn = document.getElementById('canva-btn');
+    if (!canvaBtn) return;
+    canvaBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        canvaBtn.disabled = true;
+        try {
+            downloadPDFAction(pdfBytes, pagesNbr);
+            const canvaUrl = "https://www.canva.com/signup/?signupRedirect=/design%2Fplay%3Fcategory%3DtAFK2fpTBVQ%26referrer%3Ddocs%26ui%3DeyJFIjp7IkE_IjoiQSIsIkEiOiIifX0&loginRedirect=/design%2Fplay%3Fcategory%3DtAFK2fpTBVQ%26referrer%3Ddocs%26ui%3DeyJFIjp7IkE_IjoiQSIsIkEiOiIifX0";
+            window.open(canvaUrl, "_blank", "noopener");
+        } catch (error) {
+            console.log("Error when downloading PDF: " + error);
+        }
+    })
+    canvaBtn.disabled = false;
+}
+
+const downloadPDFAction = (pdfBytes, pagesNbr) => {
+    const blob = new Blob([pdfBytes], {type: 'application/pdf'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = pdfName(pagesNbr) + '.pdf';
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url)
 }
 
 const pdfName = (pagesNbr) => {

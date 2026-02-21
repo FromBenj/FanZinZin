@@ -95,9 +95,9 @@ function addLabel(i, position, cover, font, pageSize, pagesNumber, page) {
 
     i = position === 'left' ? 2 * i - 1 : 2 * i;
     const label = cover ?
-        `Fanzinzin ${i} / ${pagesNumber} C'est la cover Thibz` :
+        `Fanzinzin ${i} / ${pagesNumber} [Cover]` :
         `Fanzinzin ${i} / ${pagesNumber}`;
-    const textSize = cover ? 20 : 25;
+    const textSize = 25;
     const color = cover ? rgb(0, 0.373, 0.388) : rgb(0.431, 0.431, 0.431);
     const fontType = font.bold;
     const textWidth = fontType.widthOfTextAtSize(label, textSize);

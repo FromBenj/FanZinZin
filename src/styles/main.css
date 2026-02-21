@@ -1,19 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
+:root {
+    --main-red: #ec7d7d;
+}
+
+
 body {
     font-family: 'Google Sans', sans-serif;
     height: 100vh;
     max-height: 100vh;
     width: 100vw;
     padding: 1rem;
-    background-image: url('./../images/colorfull-bg.jpg');
+    background-image: url('../images/main-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+#app {
+    font-family: 'Google Sans', sans-serif;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+}
+
 #header {
     height: 30vh;
+}
+
+.main-red-color {
+    color: var(--main-red);
 }
 
 #project-name {
@@ -32,7 +48,7 @@ body {
 }
 
 .form-label {
-    color: #ec7d7d;
+    color: var(--main-red);
     font-weight: bold;
     font-size: 3vh;
     text-align: center;
@@ -109,4 +125,49 @@ input[type=number]::placeholder {
     position: absolute;
     z-index: 1;
     display: none;
+}
+
+#result-message-container {
+    scale: 0;
+    height: 40vh;
+    border-radius: 3rem;
+}
+
+.done-container {
+    background-image: url('../images/done-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.error-container {
+    background-color: #ff65b3;
+}
+
+#form-result {
+    background-color: white;
+    color: var(--main-red);
+    width: 60%;
+    height: 60%;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    opacity: 90%;
+}
+
+/*Sorry*/
+#sorry-dog {
+    aspect-ratio: 1;
+    height: 450px;
+    border-radius: 3rem;
+}
+
+#sorry-message-container {
+    background: white;
+    padding: 5vh;
+    border-radius: 3rem;
 }
