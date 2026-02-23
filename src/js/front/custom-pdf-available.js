@@ -4,7 +4,6 @@ export async function getPDF(e) {
     const btn = document.getElementById('submit-btn');
     const pagesInput = document.getElementById('pages-number');
     const marginInput = document.getElementById('cut-margin');
-    console.log(e)
     if (!btn || !pagesInput || !marginInput) return;
 
     return await pdfCreation(e, pagesInput, marginInput);
@@ -56,7 +55,6 @@ const pdfToCanva = (pdfBytes, pagesNbr) => {
         try {
             downloadPDFAction(pdfBytes, pagesNbr);
             const canvaUrl = "https://www.canva.com/signup/?signupRedirect=/design%2Fplay%3Fcategory%3DtAFK2fpTBVQ%26referrer%3Ddocs%26ui%3DeyJFIjp7IkE_IjoiQSIsIkEiOiIifX0&loginRedirect=/design%2Fplay%3Fcategory%3DtAFK2fpTBVQ%26referrer%3Ddocs%26ui%3DeyJFIjp7IkE_IjoiQSIsIkEiOiIifX0";
-            console.log(canvaUrl);
             window.open(canvaUrl, "_blank", "noopener");
         } catch (error) {
             console.log("Error when downloading PDF: " + error);

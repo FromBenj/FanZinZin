@@ -1,4 +1,3 @@
-import {gsap} from "gsap";
 import {getPDF} from "./custom-pdf-available.js";
 
 export function pdfReady() {
@@ -7,7 +6,6 @@ export function pdfReady() {
     if (!submitBtn || !resultMessage) return;
     submitBtn.addEventListener('click', async (e) => {
         const errors = errorHandling();
-        console.log(errors)
         if (errors.length !== 0) {
             errorMessagesHandling(errors);
             return;
