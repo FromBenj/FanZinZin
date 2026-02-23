@@ -1,4 +1,3 @@
-import 'bootstrap';
 import {pdfReady} from "./js/front/animations.js";
 import {loadRightView} from "./js/front/device-check.js";
 

@@ -4,6 +4,7 @@ export async function getPDF(e) {
     const btn = document.getElementById('submit-btn');
     const pagesInput = document.getElementById('pages-number');
     const marginInput = document.getElementById('cut-margin');
+    console.log(e)
     if (!btn || !pagesInput || !marginInput) return;
 
     return await pdfCreation(e, pagesInput, marginInput);

@@ -2,16 +2,16 @@ import {gsap} from "gsap";
 import {getPDF} from "./custom-pdf-available.js";
 
 export function pdfReady() {
-    const submitBtn = document.getElementById('submit-btn')
+    const submitBtn = document.getElementById('submit-btn');
     const resultMessage = document.getElementById('result-message-container');
     if (!submitBtn || !resultMessage) return;
     submitBtn.addEventListener('click', async (e) => {
-        const errors = errorHandling();
-        if (errors.length !== 0) {
-            resultMessage.classList.add('error-container');
-            popErrorMessage(errors, resultMessage);
-            return;
-        }
+        // const errors = errorHandling();
+        // if (errors.length !== 0) {
+        //     resultMessage.classList.add('error-container');
+        //     popErrorMessage(errors, resultMessage);
+        //     return;
+        // }
         resultMessage.classList.add('done-container');
         await getPDF(e)
             .then(() => resultAnimation(resultMessage))
@@ -40,7 +40,6 @@ function errorHandling() {
 }
 
 const popErrorMessage = (errors, element) => {
-
     resultAnimation(element, true);
 }
 
