@@ -59,19 +59,14 @@ const errorMessagesHandling = (errors) => {
         messagesContainer.appendChild(p);
     })
 
-    pagesInput.addEventListener("focus", () => {
+    const backToInitial = () => {
         messagesContainer.replaceChildren();
         submitBtn.disabled = false;
         messagesContainer.classList.remove('error-messages');
         importContainer.classList.replace('d-none', 'd-flex');
-
-    });
-    marginInput.addEventListener("focus", () => {
-        messagesContainer.replaceChildren();
-        submitBtn.disabled = false;
-        messagesContainer.classList.remove('error-messages');
-        importContainer.classList.replace('d-none', 'd-flex');
-    });
+    }
+    pagesInput.addEventListener("focus", () => backToInitial());
+    marginInput.addEventListener("focus", () => backToInitial());
 }
 
 const resultAnimation = (element, stop = false) => {
