@@ -160,6 +160,17 @@ input[type=number]::placeholder {
     opacity: 90%;
 }
 
+.error-messages {
+    text-align: center;
+    color: white;
+    background-color: #ff65b3;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: solid 6px white;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
 /*Sorry*/
 #sorry-dog {
     aspect-ratio: 1;

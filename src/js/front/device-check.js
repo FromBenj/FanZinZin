@@ -22,7 +22,7 @@ function isDeviceCorrect() {
 async function loadView() {
     const app = document.getElementById("app");
     if (!app) return;;
-    let viewPath = isDeviceCorrect() ? 'views/home.html' : 'views/error.html';
+    let viewPath = isDeviceCorrect() ? 'views/home.html' : 'views/page-error.html';
     await fetch(viewPath)
         .then(response => response.text())
         .then(html => app.innerHTML = html)
