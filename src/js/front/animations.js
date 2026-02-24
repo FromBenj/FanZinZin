@@ -1,4 +1,5 @@
 import {getPDF} from "./custom-pdf-available.js";
+import {gsap} from "gsap";
 
 export function pdfReady() {
     const submitBtn = document.getElementById('submit-btn');

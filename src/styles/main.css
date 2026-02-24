@@ -11,7 +11,7 @@ body {
     max-height: 100vh;
     width: 100vw;
     padding: 1rem;
-    background-image: url('../../public/images/main-bg.jpg');
+    background-image: url('/images/main-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,6 +31,10 @@ body {
 
 .main-red-color {
     color: var(--main-red);
+}
+
+.main-red-bg {
+    background-color: var(--main-red);
 }
 
 #project-name {
@@ -182,4 +186,23 @@ input[type=number]::placeholder {
     background: white;
     padding: 5vh;
     border-radius: 3rem;
+}
+
+/*Notes*/
+#notes-button {
+    position: fixed;
+    right: 0;
+}
+
+.notes-modal {
+    justify-items: center;
+    align-content: center;
+}
+
+#editor {
+    height: 50vh;
+}
+
+.modal-content {
+    width: 90%;
 }
