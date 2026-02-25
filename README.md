@@ -26,8 +26,8 @@ ___
 
 ### Next Milestones
 ___
--[ ] Design landing page 
--[ ] Possibility to add the cover pages before creating the full PDF
+- [ ] Design landing page 
+- [ ] Possibility to add the cover pages before creating the full PDF
 - [ ] Save cover pages in local storage
 - [ ] Fully customizable PDF dimensions 
 - [ ] Direct integration in a writing software
